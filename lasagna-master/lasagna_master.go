@@ -32,10 +32,11 @@ func AddSecretIngredient(friendsList, myList []string) {
 
 // TODO: define the 'ScaleRecipe()' function
 
-func ScaleRecipe(quantities []float64, portions int) (scaledQuantities []float64) {
-	scaledQuantities = quantities[:]
-	for i := 0; i < len(scaledQuantities); i++ {
-		scaledQuantities[i] = scaledQuantities[i] * (float64(portions) / 2.0)
+func ScaleRecipe(quantities []float64, portions int) []float64 {
+	var scaledQuantities []float64
+
+	for _, quantity := range quantities {
+		scaledQuantities = append(scaledQuantities, quantity/2.0*float64(portions))
 	}
-	return
+	return scaledQuantities
 }

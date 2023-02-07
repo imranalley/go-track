@@ -23,17 +23,23 @@ func NewBill() map[string]int {
 func AddItem(bill, units map[string]int, item, unit string) bool {
 	// panic("Please implement the AddItem() function")
 	value, exists := units[unit]
-	if exists == false && value == 0 {
+	if exists == false || value == 0 {
 		return false
 	}
-	bill[item] = units[unit]
+	value, exists = bill[item]
+	if exists == true {
+		bill[item] += units[unit]
+	} else {
+		bill[item] = units[unit]
+	}
 
 	return true
 }
 
 // RemoveItem removes an item from customer bill.
 func RemoveItem(bill, units map[string]int, item, unit string) bool {
-	panic("Please implement the RemoveItem() function")
+	// panic("Please implement the RemoveItem() function")
+
 }
 
 // GetItem returns the quantity of an item that the customer has in his/her bill.

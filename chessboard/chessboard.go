@@ -4,27 +4,58 @@ package chessboard
 type File []bool
 
 // Declare a type named Chessboard which contains a map of eight Files, accessed with keys from "A" to "H"
-type Chessboard map[bool]bool
+type Chessboard map[string]File
 
 // CountInFile returns how many squares are occupied in the chessboard,
 // within the given file.
 func CountInFile(cb Chessboard, file string) int {
 	// panic("Please implement CountInFile()")
-	Chessboard[file]
+	count := 0
+	for _, v := range cb[file] {
+		if v {
+			count++
+		}
+	}
+	return count
 }
 
 // CountInRank returns how many squares are occupied in the chessboard,
 // within the given rank.
 func CountInRank(cb Chessboard, rank int) int {
-	panic("Please implement CountInRank()")
+	// panic("Please implement CountInRank()")
+	count := 0
+	for _, v := range cb {
+		if rank >= 1 && rank <= 8 {
+			if v[rank-1] {
+				count++
+			}
+		}
+	}
+	return count
 }
 
 // CountAll should count how many squares are present in the chessboard.
 func CountAll(cb Chessboard) int {
-	panic("Please implement CountAll()")
+	// panic("Please implement CountAll()")
+	count := 0
+	for _, v := range cb {
+		for range v {
+			count++
+		}
+	}
+	return count
 }
 
 // CountOccupied returns how many squares are occupied in the chessboard.
 func CountOccupied(cb Chessboard) int {
-	panic("Please implement CountOccupied()")
+	// panic("Please implement CountOccupied()")
+	count := 0
+	for _, v := range cb {
+		for _, b := range v {
+			if b {
+				count++
+			}
+		}
+	}
+	return count
 }

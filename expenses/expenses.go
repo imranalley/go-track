@@ -18,7 +18,7 @@ func Filter(in []Record, predicate func(Record) bool) []Record {
 	var filteredRecord []Record
 	for _, v := range in[:] {
 		if predicate(v) == true {
-			filteredRecord[0] = v
+			filteredRecord = append(filteredRecord, v)
 		}
 	}
 	return filteredRecord
@@ -27,13 +27,9 @@ func Filter(in []Record, predicate func(Record) bool) []Record {
 // ByDaysPeriod returns predicate function that returns true when
 // the day of the record is inside the period of day and false otherwise.
 func ByDaysPeriod(p DaysPeriod) func(Record) bool {
-	var filteredRecord []Record
-	for _, v := range in[:] {
-		if predicate(v) == true {
-			filteredRecord[0] = v
-		}
+	return func(rec Record) bool {
+		return rec.Day >= p.From && rec.Day <= p.To
 	}
-	return filteredRecord
 }
 
 // ByCategory returns predicate function that returns true when

@@ -15,7 +15,12 @@ type DaysPeriod struct {
 
 // Filter returns the records for which the predicate function returns true.
 func Filter(in []Record, predicate func(Record) bool) []Record {
-	panic("Please implement the Filter function")
+	for _, v := range in {
+		if predicate(in) == true {
+			in += v.Day
+		}
+	}
+	return in
 }
 
 // ByDaysPeriod returns predicate function that returns true when

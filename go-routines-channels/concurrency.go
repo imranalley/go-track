@@ -17,6 +17,12 @@ func ponger(c chan string) {
 	}
 }
 
+func panger(c chan string) {
+	for i := 0; ; i++ {
+		c <- "pang"
+	}
+}
+
 func printer(c chan string) {
 	for {
 		msg := <-c
@@ -30,6 +36,7 @@ func main() {
 
 	go pinger(c)
 	go ponger(c)
+	go panger(c)
 	go printer(c)
 
 	var input string

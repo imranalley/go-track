@@ -12,7 +12,10 @@ func Schedule(date string) time.Time {
 
 // HasPassed returns whether a date has passed.
 func HasPassed(date string) bool {
-	panic("Please implement the HasPassed function")
+	layout := "January 2, 2006 15:04:05"
+    d, _ := time.Parse(layout,date)
+	n := time.Now()
+	return n.After(d)
 }
 
 // IsAfternoonAppointment returns whether a time is in the afternoon.

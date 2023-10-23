@@ -44,5 +44,14 @@ func Description(date string) string {
 
 // AnniversaryDate returns a Time with this year's anniversary.
 func AnniversaryDate() time.Time {
-	panic("Please implement the AnniversaryDate function")
+	d := time.Now()
+
+	year, _ , _ := d.Date()	
+
+	anniversary := fmt.Sprintf("%d-09-15 00:00:00 +0000 UTC", year)
+
+	layout := "2006-01-02 15:04:05 +0000 UTC"
+	a, _ := time.Parse(layout, anniversary)
+
+	return a
 }

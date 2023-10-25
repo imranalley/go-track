@@ -4,12 +4,9 @@ package parsinglogfiles
 import "regexp"
 
 func IsValidLine(text string) bool {
-	// logLines := []string{`[TRC]`, `[DBG]`, `[INF]`, `[WRN]`, `[ERR]`, `[FTL]`}
-	re, _ := regexp.Compile(`[TRC]+[DBG]+[INF]+[WRN]+[ERR]+[FTL]`)
+	re, _ := regexp.Compile(`^\[(TRC|DBG|INF|WRN|ERR|FTL)\]`)
 
-	b := re.MatchString(text)
-
-	return b
+	return re.MatchString(text)
 }
 
 func SplitLogLine(text string) []string {

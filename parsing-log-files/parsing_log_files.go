@@ -1,6 +1,5 @@
 package parsinglogfiles
 
-// import "fmt"
 import "regexp"
 
 func IsValidLine(text string) bool {
@@ -16,7 +15,14 @@ func SplitLogLine(text string) []string {
 }
 
 func CountQuotedPasswords(lines []string) int {
-	panic("Please implement the CountQuotedPasswords function")
+	re, _ := regexp.Compile(`(?i)".*password.*"`)
+	count := 0
+	for _,line := range lines {
+		if re.MatchString(line){
+			count++
+		}
+	}
+	return count
 }
 
 func RemoveEndOfLineText(text string) string {

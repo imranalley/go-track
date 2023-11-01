@@ -4,12 +4,13 @@ import "fmt"
 
 func Convert(number int) string {
 	str := ""
-	switch number {
-	case 3 % number:
+	if number%3 == 0 {
 		str = fmt.Sprintf("%sPling", str)
-	case 5 % number:
+	}
+	if number%5 == 0 {
 		str = fmt.Sprintf("%sPlang", str)
-	case 7 % number:
+	}
+	if number%7 == 0 {
 		str = fmt.Sprintf("%sPlong", str)
 	}
 	if str == "" {

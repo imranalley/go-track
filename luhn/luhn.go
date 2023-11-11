@@ -1,44 +1,32 @@
 package luhn
 
 import (
-	"regexp"
-	"strconv"
 	"strings"
+	"unicode"
 )
 
-var digitCheck = regexp.MustCompile(`^[0-9]+$`)
-
 func Valid(id string) bool {
-	id = strings.Trim(id, " ")
-	doubledStr := ""
+	id = strings.ReplaceAll(id, " ", "")
 	sum := 0
+	double := len(id)%2 == 0
 
 	// if _, err := strconv.Atoi(id); err == nil {
-	if digitCheck.MatchString(id) {
-		if len(id) <= 1 {
+	if len(id) <= 1 {
+		return false
+	}
+	for _, n := range id {
+		if !unicode.IsDigit(n) {
 			return false
 		}
-		print(id)
-		if len(id)%2 == 0 { // if length is even
-			for index, n := range id {
-				if index%2 != 0 {
-					n *= 2
-				}
-				doubledStr += string(n)
-			}
-		} else { // if length is odd
-			for index, n := range id {
-				if index%2 == 0 {
-					n *= 2
-				}
-				doubledStr += string(n)
+		num := int(n - '0')
+		if double {
+			num *= 2
+			if num > 9 {
+				num -= 9
 			}
 		}
-		print(doubledStr)
-		for _, s := range doubledStr {
-			number, _ := strconv.Atoi(string(s))
-			sum += number
-		}
+		sum += num
+		double = !double
 	}
 	return sum%10 == 0
 }

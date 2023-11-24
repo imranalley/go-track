@@ -19,5 +19,6 @@ func ColorCode(color string) int {
 		"grey": 8,
 		"white": 9,
 	}
+	// returns based on value of color
 	return resistor[color]
 }

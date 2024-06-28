@@ -27,10 +27,13 @@ func Orbit(planet Planet) float64{
   if planet == "Neptune"{
     return 164.79132
   }
-  return 0
+  return -1.000000
 }
 
 func Age(seconds float64, planet Planet) float64 {
   orbit_multiplier := Orbit(planet)
-  return seconds/(31557600*orbit_multiplier)
+  if orbit_multiplier != -1.000000{
+    return seconds/(31557600*orbit_multiplier)
+  }
+  return orbit_multiplier
 }

@@ -32,5 +32,5 @@ func Orbit(planet Planet) float64{
 
 func Age(seconds float64, planet Planet) float64 {
   orbit_multiplier := Orbit(planet)
-  return orbit_multiplier/seconds
+  return (orbit_multiplier/31557600)/seconds
 }

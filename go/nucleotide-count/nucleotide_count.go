@@ -1,5 +1,7 @@
 package dna
 
+import "fmt"
+
 // Histogram is a mapping from nucleotide to its count in given DNA.
 // Choose a suitable data type.
 type Histogram rune
@@ -15,5 +17,7 @@ type DNA string
 // Here, the Counts method has a receiver of type DNA named d.
 func (d DNA) Counts() (Histogram, error) {
 	var h Histogram
+
+  fmt.Println(d.Count('A'))
 	return h, nil
 }

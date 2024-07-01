@@ -1,5 +1,7 @@
 package pangram
 
 func IsPangram(input string) bool {
-	panic("Please implement the IsPangram function")
+  for pos, char := range input {
+    return if char = [a-z]
+  }
 }

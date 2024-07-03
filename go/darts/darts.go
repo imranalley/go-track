@@ -1,5 +1,8 @@
 package darts
 
 func Score(x, y float64) int {
-	panic("Please implement the Score function")
+  if x<1 && y<1{
+    return 10
+  }
+  return 0
 }

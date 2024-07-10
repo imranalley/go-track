@@ -3,6 +3,7 @@ package darts
 import "math"
 
 func Score(x, y float64) int {
+  // fix inner circle
   abs_diff := math.Sqrt(x*x + y*y)
   
   if abs_diff<1 {
